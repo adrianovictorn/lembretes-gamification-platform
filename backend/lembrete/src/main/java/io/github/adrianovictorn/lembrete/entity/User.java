@@ -4,6 +4,7 @@ package io.github.adrianovictorn.lembrete.entity;
 import java.util.List;
 
 import io.github.adrianovictorn.lembrete.enums.Role;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -12,6 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -42,5 +44,8 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(name = "cargo", nullable = false, length = 100)
     private Role role;
-        
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private GameProfile gameProfile;
+
 }

@@ -9,6 +9,7 @@ public record UserCreateDTO(
     String username,
     String telefone,
     Role role
+    
 ) {
     
 }

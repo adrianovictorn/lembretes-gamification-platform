@@ -7,7 +7,14 @@ services:
       - 'POSTGRES_USER=DevAdrianoLembrete'
     ports:
       - '5432'
-
+  
+  pgadmin4:
+    image: 'dpage/pgadmin4:latest'
+    environment:
+      - 'PGADMIN_DEFAULT_EMAIL=adrianovictorads@gmail.com'
+      - 'PGADMIN_DEFAULT_PASSWORD=AdrianoVictor159@'
+    ports:
+      - '15432:80'
   backend:
     build: .
     ports: 
