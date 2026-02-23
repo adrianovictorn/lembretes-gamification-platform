@@ -1,5 +1,5 @@
 package io.github.adrianovictorn.lembrete.enums;
 
 public enum Status {
-    PENDENTE, ENVIADO, NOTIFICADO
+    PENDENTE, ENVIADO, NOTIFICADO, CONCLUIDO
 }

@@ -6,7 +6,6 @@ public record LembreteCreateDTO(
     String titulo,
     String mensagem,
     LocalDate dataLembrete,
-    Long userId,
     int xpReward,
     int coinsReward
 ) {
