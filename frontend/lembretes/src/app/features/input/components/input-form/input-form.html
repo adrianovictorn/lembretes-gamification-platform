@@ -1,0 +1,11 @@
+<form [formGroup]="form" (ngSubmit)="salvar()">
+    <h2>Lembrete com IA</h2>
+    <div>
+        <label for="">Descreva o Lembrete</label>
+        <textarea name="text" formControlName="text"></textarea>
+    </div>
+
+    <div>
+        <button type="submit">Enviar</button>
+    </div>
+</form>

@@ -17,6 +17,10 @@ export class LembreteService {
     return this.http.get<LembreteViewDtos[]>(`http://localhost:8080/api/lembrete/listar`)
   }
 
+  concluirLembrete(id: number){
+    return this.http.patch(`http://localhost:8080/api/lembrete/concluido/${id}`, null); 
+  }
+
   excluirLembrete(id: number){
     
   }

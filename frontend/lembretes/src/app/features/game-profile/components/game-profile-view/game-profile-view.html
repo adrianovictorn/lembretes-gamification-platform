@@ -1,0 +1,9 @@
+<div class="bg-neutral-400 p-10 rounded-lg">
+  
+    @if (profile(); as p ) {
+        <p> {{ nome() }}</p>
+        <app-game-profile-coins [moedas]="p.moedas"></app-game-profile-coins>
+    }
+    
+    <app-game-profile-level></app-game-profile-level>
+</div>

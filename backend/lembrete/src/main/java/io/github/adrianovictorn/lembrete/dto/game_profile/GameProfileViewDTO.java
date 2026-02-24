@@ -5,11 +5,11 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import io.github.adrianovictorn.lembrete.dto.level.LevelViewDTO;
-import io.github.adrianovictorn.lembrete.dto.user.UserViewDTO;
+import io.github.adrianovictorn.lembrete.dto.user.UserSimpleViewDTO;
 
 public record GameProfileViewDTO(
     UUID id,
-    UserViewDTO user,
+    UserSimpleViewDTO user,
     LevelViewDTO level,
     long xp,
     long moedas,

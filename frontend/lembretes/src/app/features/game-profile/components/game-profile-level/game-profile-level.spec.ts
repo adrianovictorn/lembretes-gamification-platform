@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LembreteCard } from './lembrete-card';
+import { GameProfileLevel } from './game-profile-level';
 
-describe('LembreteCard', () => {
-  let component: LembreteCard;
-  let fixture: ComponentFixture<LembreteCard>;
+describe('GameProfileLevel', () => {
+  let component: GameProfileLevel;
+  let fixture: ComponentFixture<GameProfileLevel>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LembreteCard]
+      imports: [GameProfileLevel]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LembreteCard);
+    fixture = TestBed.createComponent(GameProfileLevel);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

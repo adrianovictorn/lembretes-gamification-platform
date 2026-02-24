@@ -1,11 +1,8 @@
 package io.github.adrianovictorn.lembrete.dto.user;
 
-public record UserViewDTO(
+public record UserSimpleViewDTO(
     Long id,
     String nome,
-    String senha,
-    String telefone,
     String username
 ) {
-    
 }

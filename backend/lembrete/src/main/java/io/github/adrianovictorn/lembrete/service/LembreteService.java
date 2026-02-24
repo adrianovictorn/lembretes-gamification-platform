@@ -109,6 +109,9 @@ public class LembreteService {
         
         GameProfile profile = gameProfileRepository.findByUserId(existente.getUser().getId()).orElseThrow(() -> new EntityNotFoundException("Usuário não possui um Profile ativo !"));
         long recompensa = existente.getXpReward();
+        long moedasRecompensa = existente.getCoinsReward();
+        
+        profile.setMoedas(profile.getMoedas() + moedasRecompensa);
         profile.setXp(profile.getXp() + recompensa);
 
 

@@ -46,9 +46,7 @@ export class AuthService {
     const {scope} = jwtDecode<{scope?: string}>(token)
 
     const roles = (scope  ?? '').split(/\s+/).filter(s => s.startsWith('ROLE_')) as Role[]
-    console.log(roles)
     const haveRole = roles.some(r => itemRole.includes(r)) 
-    console.log(haveRole)
     return haveRole 
   }
 

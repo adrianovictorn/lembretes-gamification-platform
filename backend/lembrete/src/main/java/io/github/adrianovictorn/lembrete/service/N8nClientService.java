@@ -21,7 +21,7 @@ public class N8nClientService {
 
     public N8nParseResponse parse(N8nParseRequest req) {
         return webClient.post()
-                .uri("/webhook-test/lembrete-parse")
+                .uri("/webhook/lembrete-parse")
                 .contentType(org.springframework.http.MediaType.APPLICATION_JSON)
                 .accept(org.springframework.http.MediaType.APPLICATION_JSON)
                 .bodyValue(req)

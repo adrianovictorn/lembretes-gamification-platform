@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.github.adrianovictorn.lembrete.dto.integration.IaLembreteRequest;
-import io.github.adrianovictorn.lembrete.dto.integration.N8nParseRequest;
-import io.github.adrianovictorn.lembrete.dto.integration.N8nParseResponse;
 import io.github.adrianovictorn.lembrete.dto.lembrete.LembreteCreateDTO;
 import io.github.adrianovictorn.lembrete.dto.lembrete.LembreteListDTO;
 import io.github.adrianovictorn.lembrete.dto.lembrete.LembreteUpdateDTO;
@@ -33,11 +31,9 @@ public class LembreteController {
     
 
     private final LembreteService lembreteService;
-    private final N8nClientService clientService;
 
     public LembreteController(LembreteService lembreteService, N8nClientService n8nClientService) {
         this.lembreteService = lembreteService;
-        this.clientService = n8nClientService;
     }
 
     @PostMapping("/cadastrar")
@@ -51,8 +47,6 @@ public class LembreteController {
         String username = jwt.getClaimAsString("sub");
         return ResponseEntity.ok(lembreteService.cadastrarViaLLM(username, dto.text()));
     }
-
-
 
     @GetMapping("/listar")
     public ResponseEntity<List<LembreteListDTO>> listarLembretes(){
