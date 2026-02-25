@@ -1,9 +1,24 @@
-<p>lembrete-list works!</p>
+<pre>
+page={{ vm().page }}
+totalPages={{ vm().totalPages }}
+canNext={{ vm().canNext }}
+canPrev={{ vm().canPrev }}
+</pre>
 
-@if (lembretes$ | async; as lembretes) {
-    @for (l of lembretes; track l.id) {
-    
-        <app-lembrete-card [item]="l"></app-lembrete-card>
-    }
-
+@if (vm().loading) {
+    <p>Carregando...</p>
 }
+
+@if (!vm().loading && vm().lembretes.length === 0) {
+    <p>Nenhum lembrete.</p>
+}
+
+@for (l of vm().lembretes; track l.id) {
+    <app-lembrete-card [item]="l" (concluir)="concluido(l.id)"></app-lembrete-card>
+}
+
+<div class="flex gap-2 mt-4">
+    <button (click)="prev()" > Anterior</button>
+    <span>Página {{ vm().page + 1 }} de {{ vm().totalPages }}</span>
+    <button (click)="next()" >Próximo</button>
+</div>

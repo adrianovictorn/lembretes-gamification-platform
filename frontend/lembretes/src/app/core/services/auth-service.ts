@@ -32,7 +32,7 @@ export class AuthService {
   }
 
   login(username: string, password: string ){
-    return this.http.post<LoginResponse>('http://localhost:8080/api/auth/login', {username, password}).pipe(
+    return this.http.post<LoginResponse>('/api/auth/login', {username, password}).pipe(
       tap(res => localStorage.setItem(this.KEY, res.acess_token))
     )
 

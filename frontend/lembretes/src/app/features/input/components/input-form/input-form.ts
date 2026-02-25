@@ -36,7 +36,7 @@ export class InputForm {
     this.inputService.criarComIa(request).subscribe({
       next: (res) => {
         alert(`Sucesso ao enviar requisição: ${res}`)
-        this.route.navigate([''])
+        this.route.navigate(['input'])
 
       },
       error: (error) => {
