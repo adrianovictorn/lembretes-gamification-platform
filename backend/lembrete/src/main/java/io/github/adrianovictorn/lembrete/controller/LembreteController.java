@@ -23,7 +23,6 @@ import io.github.adrianovictorn.lembrete.dto.lembrete.LembreteListDTO;
 import io.github.adrianovictorn.lembrete.dto.lembrete.LembreteUpdateDTO;
 import io.github.adrianovictorn.lembrete.dto.lembrete.LembreteViewDTO;
 import io.github.adrianovictorn.lembrete.service.LembreteService;
-import io.github.adrianovictorn.lembrete.service.N8nClientService;
 
 @RestController
 @RequestMapping("/api/lembrete")
@@ -32,7 +31,7 @@ public class LembreteController {
 
     private final LembreteService lembreteService;
 
-    public LembreteController(LembreteService lembreteService, N8nClientService n8nClientService) {
+    public LembreteController(LembreteService lembreteService) {
         this.lembreteService = lembreteService;
     }
 
@@ -53,13 +52,14 @@ public class LembreteController {
         return ResponseEntity.ok(lembreteService.listarLembretes());
     }
 
-    @GetMapping("/{usuarioId}")
+    @GetMapping("/buscar")
     public ResponseEntity<Page<LembreteViewDTO>> buscarPorUsuario(
         @RequestParam(defaultValue = "0", name = "page", required = true) int page,
         @RequestParam(defaultValue = "10", name = "size", required = false) int size,
-        @PathVariable Long usuarioId
+        @AuthenticationPrincipal Jwt jwt
         ){
-            return ResponseEntity.ok(lembreteService.buscarPorUsuario(usuarioId, page, size));
+            String username = jwt.getClaimAsString("sub");
+            return ResponseEntity.ok(lembreteService.buscarPorUsuario(username, page, size));
     }
 
     @PatchMapping("/concluido/{id}")

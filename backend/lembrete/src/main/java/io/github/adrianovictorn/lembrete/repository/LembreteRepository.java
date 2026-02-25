@@ -8,6 +8,6 @@ import io.github.adrianovictorn.lembrete.entity.Lembrete;
 
 public interface LembreteRepository extends JpaRepository<Lembrete, Long>{
     
-    Page<Lembrete> findByUserId(Long id, Pageable pageable);
+    Page<Lembrete> findByUserUsername(String username, Pageable pageable);
 
 }
