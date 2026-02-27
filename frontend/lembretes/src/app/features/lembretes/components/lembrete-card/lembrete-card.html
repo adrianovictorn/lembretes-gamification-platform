@@ -1,15 +1,37 @@
-<div class="shadow-2xl flex justify-between border gap-3 m-4 rounded-lg text-center border-gray-300">
-    <div class="flex flex-col flex-1">
-        <h2 class="text-4xl font-semibold text-sky-600">{{ item().titulo }}</h2>
-        <p class="text-neutral-800 text-2xl font-light">{{ item().mensagem }}</p>
-        <p class="bg-green-600 border p-2 rounded-xl m-a text-white m-auto">{{ item().status }}</p>
-    </div>
+<div class="w-full h-full ">
+    <div #card class="shadow-2xl flex flex-col  border  m-4 rounded-lg text-center border-gray-300 p-2 md:p-10 md:h-full transition will-change-transform">
+        
+        <div class=" w-full h-max justify-self-end-safe">
+            <p class="p-3 text-end text-red-500">X</p>
+        </div>
+        
+        <div class="font-poppins font-extralight  p-2">
+            <h2 class="font-cinzel text-3xl font-bold text-shadow-gray-800  mb-3">Missão</h2>
+            <p class="text-xl font-semibold text-sky-600 mb-3">{{ item().titulo }}</p>
+            <p class="text-neutral-800 text-md font-medium mb-2">Descrição da Missão:</p>
+            
+            <p class="text-neutral-800 text-md font-light text-justify mb-3"> {{ item().mensagem }}</p>
+            <p class="text-neutral-800 text-md font-medium mb-2">Data e Hora Limite</p>
+            <p class="">{{ formatarDataHorario(item().dataLembrete) }}</p>
+            <div>
+                <p class="text-neutral-800 text-md font-medium mb-2 mt-2">Recompensas</p>
+                <p class="mb-1">Xp Rewards: <span class="text-red-500">{{ item().xpReward }}</span></p>
+                <p class="mb-2">Coins: <span class="text-yellow-600">{{item().coinsReward}}</span></p>
+                
+            </div>
+            <div>
+                <p class="bg-green-600 border p-2  rounded-xl  text-white  m-auto">{{ item().status }}</p>
+            </div>
+        </div>
 
-    <div>
-        <p class="p-3 text-red-500">X</p>
-    </div>
 
-    <div>
-        <button type="button" (click)="onConcluir()">Concluir</button>
+        <div [hidden]="item().status === 'CONCLUIDO'">
+            <button type="button" class="p-5 bg-amber-400 rounded-md text-white" (click)="onConcluir()">Concluir e Regastar Recompensa</button>
+        </div>
+        
+        <div #reward class="pointer-events-none fixed lef-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-90 z-50">
+            
+        </div>
     </div>
 </div>
+

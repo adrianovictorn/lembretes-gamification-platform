@@ -1,16 +1,19 @@
-import { Component, effect, inject, OnInit } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { LembreteCard } from "../lembrete-card/lembrete-card";
 import { LembreteFacade } from '../../services/lembrete.facade';
+import { AutoAnimateDirective } from '../../directives/auto-animate.directive';
+
 
 @Component({
   selector: 'app-lembrete-list',
   standalone: true,
-  imports: [LembreteCard],
+  imports: [AutoAnimateDirective,LembreteCard],
   templateUrl: './lembrete-list.html',
   styleUrl: './lembrete-list.css',
 })
 export class LembreteList {
 
+  
   private facade = inject(LembreteFacade)
 
   vm = this.facade.vm
@@ -30,4 +33,6 @@ export class LembreteList {
   concluido(id: number){
     this.facade.concluir(id);
   }
+
+  enterClass = signal('enter-animation')
 }

@@ -9,7 +9,10 @@ public record LembreteViewDTO(
     String titulo,
     String mensagem,
     Status status,
-    LocalDateTime criadoEm
+    LocalDateTime criadoEm,
+    int coinsReward,
+    int xpReward,
+    LocalDateTime dataLembrete
 ) {
 
 }
