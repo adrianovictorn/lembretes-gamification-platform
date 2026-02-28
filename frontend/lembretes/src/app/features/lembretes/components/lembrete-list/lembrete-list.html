@@ -9,11 +9,11 @@
 }
 
 
-<div autoAnimate class="grid  grid-cols-1 md:grid-cols-3 gap-4">
+<div  class="grid  grid-cols-1 md:grid-cols-3 gap-4 ">
 
     @for (l of vm().lembretes; track l.id) {
         
-            <app-lembrete-card   [item]="l" (concluir)="concluido(l.id)"></app-lembrete-card>
+            <app-lembrete-card   [item]="l" (concluir)="concluido(l.id)" [concluidoOk]="true" ></app-lembrete-card>
     
     
     }

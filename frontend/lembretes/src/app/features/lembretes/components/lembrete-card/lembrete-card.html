@@ -1,36 +1,42 @@
 <div class="w-full h-full ">
-    <div #card class="shadow-2xl flex flex-col  border  m-4 rounded-lg text-center border-gray-300 p-2 md:p-10 md:h-full transition will-change-transform">
+    <div #card class="shadow-2xl flex flex-col bg-slate-950/96 ring-1 ring-cyan-400/10 backdrop-blur-md border text-slate-100 m-4 rounded-lg text-center border-slate-700/60 p-2 md:p-10 md:h-full">
         
         <div class=" w-full h-max justify-self-end-safe">
             <p class="p-3 text-end text-red-500">X</p>
         </div>
         
         <div class="font-poppins font-extralight  p-2">
-            <h2 class="font-cinzel text-3xl font-bold text-shadow-gray-800  mb-3">Missão</h2>
-            <p class="text-xl font-semibold text-sky-600 mb-3">{{ item().titulo }}</p>
-            <p class="text-neutral-800 text-md font-medium mb-2">Descrição da Missão:</p>
+            <h2 class="font-cinzel font-extralight text-2xl mb-3 tracking-widest">Lembrete 03</h2>
+            <p class="font-poppins text-sky-400 text-xl font-extrabold  mb-3 tracking-widest ">{{ item().titulo }}</p>
+            <p class="text-cyan-300 text-md font-medium mb-2 tracking-widest">Descrição do Lembrete</p>
             
-            <p class="text-neutral-800 text-md font-light text-justify mb-3"> {{ item().mensagem }}</p>
-            <p class="text-neutral-800 text-md font-medium mb-2">Data e Hora Limite</p>
+            <p class=" text-md font-light text-justify mb-3 "> {{ item().mensagem }}</p>
+            <p class="text-cyan-300 text-md font-medium mb-2 tracking-widest ">Data e Hora Limite</p>
             <p class="">{{ formatarDataHorario(item().dataLembrete) }}</p>
             <div>
-                <p class="text-neutral-800 text-md font-medium mb-2 mt-2">Recompensas</p>
-                <p class="mb-1">Xp Rewards: <span class="text-red-500">{{ item().xpReward }}</span></p>
+                <p class="text-cyan-300 text-md font-medium mb-2 mt-2  tracking-widest">Recompensas</p>
+                <p class="mb-1">Xp Rewards: <span class="text-red-500 uper">{{ item().xpReward }}</span></p>
                 <p class="mb-2">Coins: <span class="text-yellow-600">{{item().coinsReward}}</span></p>
                 
             </div>
             <div>
-                <p class="bg-green-600 border p-2  rounded-xl  text-white  m-auto">{{ item().status }}</p>
+                <p class="bg-emerald-500/20 border border-emerald-400/30 text-emerald-300  p-2  rounded-xl  m-auto">{{ item().status }}</p>
             </div>
         </div>
 
 
         <div [hidden]="item().status === 'CONCLUIDO'">
-            <button type="button" class="p-5 bg-amber-400 rounded-md text-white" (click)="onConcluir()">Concluir e Regastar Recompensa</button>
+            <button type="button" class="p-5 bg-amber-400 rounded-md text-white cursor-pointer" (click)="onConcluir()">Concluir e Regastar Recompensa</button>
         </div>
         
-        <div #reward class="pointer-events-none fixed lef-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-90 z-50">
-            
+
+        <div #reward_blur class="fixed inset-0 z-40  bg-black/20 backdrop-blur-md opacity-0 pointer-events-none"></div>
+        <div #reward class="bg-slate-950/80 p-3 border border-cyan-400/30 shadow-2xl shadow-cyan-300/20 text-[10px] rounded-md pointer-events-none fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-150 z-50">
+            <p class="font-cinzel text-lg">Lembrete Concluído</p>
+            <p class="font-poppins text-sky-400 p-1 font-semibold">Parabéns Você completou a tarefa !</p>
+            <p class="text-cyan-300 font-light">Recompensas Recebidas:</p>
+            <p #xpEl class="text-emerald-500/80">{{ item().xpReward }}xp</p>
+            <p #coinEl class="text-amber-500/80">{{ item().coinsReward }} coins</p>
         </div>
     </div>
 </div>

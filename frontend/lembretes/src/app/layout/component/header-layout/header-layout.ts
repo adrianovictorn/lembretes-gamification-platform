@@ -1,10 +1,12 @@
 import { Component, EventEmitter, NgModule, Output } from '@angular/core';
 import { LucideAngularModule, Menu  } from "lucide-angular";
+import { GameProfileLevel } from "../../../features/game-profile/components/game-profile-level/game-profile-level";
+import { LevelLayout } from "../level-layout/level-layout";
 
 @Component({
   selector: 'app-header-layout',
   standalone: true,
-  imports: [LucideAngularModule],
+  imports: [LucideAngularModule, LevelLayout],
   templateUrl: './header-layout.html',
   styleUrl: './header-layout.css',
 })

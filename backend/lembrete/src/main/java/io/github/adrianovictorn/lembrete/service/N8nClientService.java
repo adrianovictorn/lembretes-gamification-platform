@@ -15,7 +15,7 @@ public class N8nClientService {
 
     public N8nClientService(WebClient.Builder builder) {
         this.webClient = builder
-                .baseUrl("http://191.101.78.51:32768")
+                .baseUrl("https://adrianovictorn8n.com")
                 .build();
     }
 

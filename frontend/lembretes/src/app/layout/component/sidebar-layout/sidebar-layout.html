@@ -1,11 +1,11 @@
 
-<nav class="bg-indigo-50 text-blue-700 dark:text-blue-500 text-lg font-extralight h-full dark:bg-gray-700">
-    <img src="assets/images/logo_transparente.svg" class="h-35 m-auto" alt="Logo">
+<nav class="bg-slate-800 p-2 text-sm  font-poppins rounded-xl text-white h-full border border-white/25">
+    <img src="assets/images/logo_transparente.svg " class="h-19 w-full m-auto border-b border-white/25 mb-5" alt="Logo">
     @for (m of menu; track $index) {
         <ul>
         @if (canSee(m.role)) {
                 <li>
-                    <a [routerLink]="m.path" routerLinkActive=" bg-indigo-100 dark:bg-indigo-900" class="flex gap-2 p-3 text-center items-center justify-center-safe"> 
+                    <a [routerLink]="m.path" routerLinkActive="bg-sky-500/40 " class="font-poppins text-sm tracking-wider flex gap-2 p-3 text-center rounded-md text-white items-center justify-center-safe"> 
                         <lucide-icon [img]="m.icon"  ></lucide-icon>
                         <span>
                             {{ m.label }}
@@ -18,7 +18,7 @@
                         <ul>
                         @if (canSee(c.role)) {
                                 <li >
-                                    <a [routerLink]="c.path" routerLinkActive=" bg-indigo-100 dark:bg-indigo-900" class="flex gap-4 p-2  text-center items-center justify-center-safe">
+                                    <a [routerLink]="c.path" routerLinkActive=" bg-indigo-900" class="flex gap-4 p-2  text-center items-center justify-center-safe">
                                         <lucide-icon [img]="c.icon"></lucide-icon>
                                         <span>{{ c.label }}</span>
                                     </a>

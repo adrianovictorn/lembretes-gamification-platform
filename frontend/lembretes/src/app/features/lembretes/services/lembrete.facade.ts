@@ -58,11 +58,11 @@ export class LembreteFacade {
   }
 
   concluir(id: number){
-    this.api.concluirLembrete(id)
-    .pipe(
-      tap(() => this.carregar()),
-      finalize(() => this.loading.set(false))
-    ).subscribe()
+    this.api.concluirLembrete(id).subscribe({
+      next: (res) => {
+        console.log(`OK ${res} | ID ${id}`)
+      }
+    })
   }
 
 }
