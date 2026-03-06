@@ -8,5 +8,6 @@ export interface LembreteViewDtos {
     coinsReward: number;
     xpReward: number;
     dataLembrete: Date;
+    userNumber: number
 
 }

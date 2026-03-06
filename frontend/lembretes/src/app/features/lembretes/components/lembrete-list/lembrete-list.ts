@@ -18,7 +18,7 @@ export class LembreteList {
   vm = this.facade.vm
 
   ngOnInit(){
-    this.facade.carregar()
+    this.facade.carregarPendentes()
   }
 
 
@@ -30,7 +30,7 @@ export class LembreteList {
   }
 
   concluido(id: number){
-
+    this.facade.concluir(id)
     
   }
 

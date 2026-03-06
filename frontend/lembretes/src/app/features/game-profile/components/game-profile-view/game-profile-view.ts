@@ -19,5 +19,6 @@ export class GameProfileView {
   readonly nome = computed(() => this.profile()?.user.nome ?? '')
   readonly moedas = computed(() => this.profile()?.moedas ?? '')
   readonly level = computed(() => this.profile()?.xp)
+  readonly role = computed(() => this.profile()?.user.role ?? '')
   
 }

@@ -17,7 +17,10 @@ public interface UserMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "senha",ignore = true)
     @Mapping(target = "lembretes", ignore = true)
+    @Mapping(target = "gameProfile", ignore = true)
+    @Mapping(target = "userSequence", ignore = true)
     User toEntity(UserCreateDTO dto);
+
     UserViewDTO toViewDTO(User user);
     List<UserListDTO> toList(List<User> lista);
 

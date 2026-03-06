@@ -1,4 +1,4 @@
-import { BookText, CirclePlus, List, LucideIconData, PlusIcon } from "lucide-angular";
+import { BookText, CirclePlus, List, LucideIconData, PlusIcon, User } from "lucide-angular";
 
 export type Role = 'ROLE_ADMIN'| 'ROLE_USER';
 
@@ -14,20 +14,27 @@ export interface MenuItem {
 }
 
 export const MENU_ITEMS: MenuItem[] = [
+     {
+            label: "Profile",
+            path: "/profile",
+            children: [],
+            icon: User,
+            role: ['ROLE_ADMIN', 'ROLE_USER']
+        },
     {
         label: 'Lembrete', 
         path: '/lembretes', 
         children: [
             {
                 label: 'Novo',
-                path: '/lembrete/novo',
+                path: '/input',
                 role: ['ROLE_USER', 'ROLE_ADMIN'],
                 icon: CirclePlus,
                 children: []
             },
             {
-                label: 'Listar',
-                path: '/lembrete',
+                label: 'Histórico',
+                path: '/lembrete/historico',
                 role: ['ROLE_ADMIN', 'ROLE_USER'],
                 icon: List,
                 children: []
@@ -35,5 +42,6 @@ export const MENU_ITEMS: MenuItem[] = [
         ],
         icon: BookText,
         role: ['ROLE_ADMIN', 'ROLE_USER']}
+       
 ]
 

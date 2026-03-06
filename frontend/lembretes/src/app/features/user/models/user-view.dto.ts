@@ -4,4 +4,5 @@ export interface UserSimpleViewDTO {
   id: number;
   nome: string;
   username: string;
+  role: string
 } 

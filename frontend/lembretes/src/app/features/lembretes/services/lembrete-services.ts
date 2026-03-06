@@ -26,6 +26,13 @@ export class LembreteService {
     return this.http.get<Page<LembreteViewDtos>>(`/api/lembrete/buscar`, {params})
   }
 
+  buscarLembretesPendentes(page: number, size: number){
+    let params = new HttpParams()
+    params = params.set('page', page)
+    params = params.set('size', size)
+    return this.http.get<Page<LembreteViewDtos>>(`/api/lembrete/buscar/pendentes`, {params})
+  }
+
 
   concluirLembrete(id: number){
     return this.http.patch(`/api/lembrete/concluido/${id}`, null); 

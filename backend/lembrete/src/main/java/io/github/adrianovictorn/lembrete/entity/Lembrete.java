@@ -53,6 +53,9 @@ public class Lembrete {
     @Column(name = "coins_reward", nullable = true)
     private int coinsReward;
 
+    @Column(name = "user_number")
+    private long userNumber;
+
     @Column(name = "concluido_em", nullable = true)
     private LocalDateTime concluidoEm;
 }

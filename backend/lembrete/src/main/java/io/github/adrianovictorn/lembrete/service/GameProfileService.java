@@ -61,7 +61,6 @@ public class GameProfileService {
             gameProfileRepository.save(profile);
         }
     }
-
     
 
     

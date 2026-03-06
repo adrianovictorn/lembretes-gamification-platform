@@ -1,11 +1,12 @@
 import { afterNextRender, Component, DestroyRef, ElementRef, EventEmitter, inject, input, Input, output, Output, viewChild } from '@angular/core';
 import { LembreteViewDtos } from '../../models/lembrete-view.dto';
 import { gsap } from 'gsap';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-lembrete-card',
   standalone: true,
-  imports: [],
+  imports: [NgClass],
   templateUrl: './lembrete-card.html',
   styleUrl: './lembrete-card.css',
 })

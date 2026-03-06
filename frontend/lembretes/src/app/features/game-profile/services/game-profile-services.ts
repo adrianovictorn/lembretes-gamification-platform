@@ -9,6 +9,6 @@ export class GameProfileServices {
   private http = inject(HttpClient)
 
   buscarGameProfile(){
-    return this.http.get<GameProfileViewDTO>(`http://localhost:8080/api/game-profile/buscar/autenticado`)
+    return this.http.get<GameProfileViewDTO>(`/api/game-profile/buscar/autenticado`)
   }
 }

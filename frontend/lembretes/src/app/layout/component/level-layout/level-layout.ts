@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './level-layout.css',
 })
 export class LevelLayout {
-
+  
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -67,10 +68,16 @@ public class LembreteService {
 
     public LembreteViewDTO cadastrarLembrete(LembreteCreateDTO dto, String username){
         User usuarioExistente = userRepository.findByUsername(username).orElseThrow(() -> new EntityNotFoundException("Usuário não existe ou não encontrado !"));
+        usuarioExistente.setUserSequence(usuarioExistente.getUserSequence() + 1);
+        
+        User usuarioSalvo = userRepository.save(usuarioExistente);
+
         Lembrete novoLembrete = lembreteMapper.toEntity(dto);
         novoLembrete.setUser(usuarioExistente);
+        novoLembrete.setUserNumber(usuarioSalvo.getUserSequence());
         novoLembrete.setStatus(Status.PENDENTE);
         Lembrete salvo = lembreteRepository.save(novoLembrete);
+        
         return lembreteMapper.toViewDTO(salvo);
     }
 
@@ -90,6 +97,12 @@ public class LembreteService {
         Pageable pagina = PageRequest.of(page, size);
         User user = userRepository.findByUsername(username).orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado !"));
         return lembreteRepository.findByUserUsername(user.getUsername(), pagina).map(lembreteMapper::toViewDTO);
+    }
+
+    public Page<LembreteViewDTO> buscarLembretesPendentes(String username, int page, int size){
+        Pageable pagina = PageRequest.of(page, size, Sort.by("dataLembrete").descending());
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado !"));
+        return lembreteRepository.findByUserUsernameAndStatus(user.getUsername(), Status.PENDENTE, pagina).map(lembreteMapper::toViewDTO);
     }
 
     public void deletarLembrete(Long id){

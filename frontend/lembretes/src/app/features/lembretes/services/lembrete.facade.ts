@@ -28,6 +28,18 @@ export class LembreteFacade {
 )
 
 
+  carregarPendentes(page = this.page(), size = this.size()){
+    this.loading.set(true)
+
+    this.api.buscarLembretesPendentes(page, size)
+    .pipe(finalize(() => this.loading.set(false)))
+    .subscribe(res => {
+      this.lembretes.set(res.content)
+      this.page.set(page)
+      this.totalPages.set(res.totalPages)
+    })
+  }
+
   carregar(page = this.page(), size = this.size()){
     this.loading.set(true)
 
@@ -38,7 +50,6 @@ export class LembreteFacade {
         this.lembretes.set(res.content)
         this.page.set(page)
         this.totalPages.set(res.totalPages)
-        console.log(res.content)
       })
   }
 

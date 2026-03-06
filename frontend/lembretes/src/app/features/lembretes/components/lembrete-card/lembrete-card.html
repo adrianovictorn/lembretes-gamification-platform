@@ -6,7 +6,14 @@
         </div>
         
         <div class="font-poppins font-extralight  p-2">
-            <h2 class="font-cinzel font-extralight text-2xl mb-3 tracking-widest">Lembrete 03</h2>
+
+            @if (item().userNumber <= 9) {
+                <h2 class="font-cinzel font-extralight text-2xl mb-3 tracking-widest">Lembrete {{ '0' + item().userNumber }}</h2>
+            }
+
+            @if (item().userNumber > 9) {
+                <h2 class="font-cinzel font-extralight text-2xl mb-3 tracking-widest">Lembrete {{  item().userNumber }}</h2>
+            }
             <p class="font-poppins text-sky-400 text-xl font-extrabold  mb-3 tracking-widest ">{{ item().titulo }}</p>
             <p class="text-cyan-300 text-md font-medium mb-2 tracking-widest">Descrição do Lembrete</p>
             
@@ -20,7 +27,12 @@
                 
             </div>
             <div>
-                <p class="bg-emerald-500/20 border border-emerald-400/30 text-emerald-300  p-2  rounded-xl  m-auto">{{ item().status }}</p>
+                <p class=" p-2  rounded-xl  m-auto"
+                [ngClass]="{
+                    'border bg-emerald-500/20 border-emerald-400/30 text-emerald-300': item().status === 'CONCLUIDO',
+                    'border bg-amber-900/20 border-amber-400/30 text-amber-300': item().status === 'PENDENTE'
+                }"
+                >{{ item().status }}</p>
             </div>
         </div>
 

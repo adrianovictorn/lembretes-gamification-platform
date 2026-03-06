@@ -12,7 +12,8 @@ public record LembreteViewDTO(
     LocalDateTime criadoEm,
     int coinsReward,
     int xpReward,
-    LocalDateTime dataLembrete
+    LocalDateTime dataLembrete,
+    long userNumber
 ) {
 
 }

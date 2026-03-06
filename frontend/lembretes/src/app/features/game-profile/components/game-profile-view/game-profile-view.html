@@ -1,7 +1,17 @@
-<div class="bg-neutral-400 p-10 rounded-lg">
+<div class="bg-cyan-950/90 p-15 rounded-lg text-white flex gap-2">
+
+    <div class="rounded-full">
+        <img src="" alt="">
+    </div>
   
     @if (profile(); as p ) {
-        <p> {{ nome() }}</p>
+        <p class="font-medium"> {{ nome() }}</p> 
+        @if (role() === 'ROLE_ADMIN') {
+            <p class="bg-red-600 font-medium text-[12px] text-black/80 rounded-full h-full p-1">Admin</p>
+        }@else {
+            <p></p>
+        }
+    
         <app-game-profile-coins [moedas]="p.moedas"></app-game-profile-coins>
     }
     
